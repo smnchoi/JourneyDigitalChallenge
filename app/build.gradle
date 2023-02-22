@@ -1,8 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.dagger.hilt.android'
-
 }
 
 android {
@@ -49,18 +47,6 @@ android {
 }
 
 dependencies {
-    // Hilt
-    implementation 'com.google.dagger:hilt-android:2.45'
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.45'
-
-    // For instrumentation tests - Hilt
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.45'
-    androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.45'
-
-    // For local unit tests - Hilt
-    testImplementation 'com.google.dagger:hilt-android-testing:2.45'
-    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.45'
-
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
