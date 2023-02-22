@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "org.jetbrains.kotlin.plugin.parcelize"
 }
 
 android {
@@ -54,6 +55,7 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
     implementation 'androidx.compose.material:material:1.1.1'
     implementation "androidx.compose.runtime:runtime-livedata:1.1.0"
+
 
     // Navigation BEGIN ---------------------------------------------------
     def nav_version = "2.4.0"
