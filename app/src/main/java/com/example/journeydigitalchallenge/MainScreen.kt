@@ -7,27 +7,31 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.text.input.TextFieldValue
 
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
     navController: NavController,
 ) {
-
     val posts by viewModel.posts.observeAsState(emptyList())
+
+    // State variable to hold the user's search query
+    var searchQuery by remember { mutableStateOf(TextFieldValue("")) }
 
     Column(modifier = Modifier.fillMaxSize()) {
 
         // Search Bar
-        TextField(value = viewModel.searchQuery.value,
-            onValueChange = { viewModel.searchQuery.value = it },
+        TextField(
+            value = searchQuery,
+            onValueChange = { searchQuery = it },
             label = { Text("Search") },
             modifier = Modifier
                 .padding(10.dp)
@@ -41,8 +45,19 @@ fun MainScreen(
         LazyColumn(modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)) {
-            items(posts) { post ->
-                PostListItem(post) { viewModel.showPostDetails(post.id, navController) }
+            // Show all posts when search bar is empty
+            val filteredPosts = if (searchQuery.text.isEmpty()) {
+                posts
+            } else {
+                posts.filter { post ->
+                    post.title.contains(searchQuery.text, true) || post.body.contains(searchQuery.text, true)
+                }
+            }
+
+            items(filteredPosts) { post ->
+                PostListItem(post) {
+                    viewModel.showPostDetails(post.id, navController)
+                }
             }
         }
     }
