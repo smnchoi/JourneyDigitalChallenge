@@ -1,0 +1,23 @@
+<navigation
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/mainScreen">
+
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="com.example.journeydigitalchallenge.MainScreen"
+        android:label="MainScreen"
+        tools:layout="@layout/main_screen" />
+
+    <fragment
+        android:id="@+id/postScreen"
+        android:name="com.example.journeydigitalchallenge.PostScreen"
+        android:label="PostScreen"
+        tools:layout="@layout/post_screen" />
+
+    <action
+        android:id="@+id/action_mainScreen_to_postScreen"
+        app:destination="@id/postScreen" />
+
+</navigation>

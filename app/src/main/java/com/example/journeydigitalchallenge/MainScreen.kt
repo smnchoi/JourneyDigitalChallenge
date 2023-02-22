@@ -13,10 +13,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
+    navController: NavController,
 ) {
 
     val posts by viewModel.posts.observeAsState(emptyList())
@@ -40,9 +42,7 @@ fun MainScreen(
             .fillMaxSize()
             .padding(horizontal = 10.dp)) {
             items(posts) { post ->
-                PostListItem(post) {
-                    viewModel.showPostDetails(post)
-                }
+                PostListItem(post) { viewModel.showPostDetails(post.id, navController) }
             }
         }
     }
