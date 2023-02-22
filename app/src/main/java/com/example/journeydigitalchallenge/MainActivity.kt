@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.journeydigitalchallenge.ui.theme.JourneyDigitalChallengeTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,13 +19,16 @@ class MainActivity : ComponentActivity() {
         window.statusBarColor = Color.Black.toArgb()
 
         setContent {
+            val viewModel: MainViewModel = viewModel()
+
             JourneyDigitalChallengeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PostScreen()
+                    MainScreen(viewModel = viewModel)
+//                    PostScreen()
                 }
             }
         }

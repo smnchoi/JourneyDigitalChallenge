@@ -109,12 +109,10 @@ val _comments = listOf(
 fun PostScreen() {
     Column() {
 //        PostDetail(post = _post, comments = _comments)
-        PostList(posts = _posts,
-            onItemClick = { postId -> postId }
-        )
     }
 }
 
+// TODO: Remove this then, refactor with Comment Composables
 @Composable
 fun PostDetail(
     post: Post,
@@ -165,46 +163,3 @@ fun PostDetail(
     }
 }
 
-// TODO: using PostList
-@Composable
-fun PostList(
-    posts: List<Post>,
-    onItemClick: (postId: Int) -> Unit
-) {
-    LazyColumn {
-        items(posts) { post ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .clickable { onItemClick(post.id) }
-            ) {
-                Column(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .height(100.dp)
-                        .background(color = Color.DarkGray)
-                )
-                {
-                    // Title
-                    Text(
-                        text = post.title,
-                        style = MaterialTheme.typography.h6,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-
-                    // Body
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = post.body,
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.padding(horizontal = 10.dp),
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-            }
-        }
-    }
-}
