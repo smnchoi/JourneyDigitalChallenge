@@ -15,6 +15,8 @@ import androidx.navigation.NavController
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.text.input.TextFieldValue
+import com.example.journeydigitalchallenge.model.data.Post
+import com.example.journeydigitalchallenge.viewmodels.MainViewModel
 
 @Composable
 fun MainScreen(

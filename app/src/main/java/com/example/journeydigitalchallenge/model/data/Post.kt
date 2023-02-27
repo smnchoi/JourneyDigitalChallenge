@@ -1,4 +1,4 @@
-package com.example.journeydigitalchallenge
+package com.example.journeydigitalchallenge.model.data
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 

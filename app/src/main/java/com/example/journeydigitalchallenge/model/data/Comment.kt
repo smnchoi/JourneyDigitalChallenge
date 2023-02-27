@@ -1,4 +1,4 @@
-package com.example.journeydigitalchallenge
+package com.example.journeydigitalchallenge.model.data
 
 data class Comment(
     val postId: Int,

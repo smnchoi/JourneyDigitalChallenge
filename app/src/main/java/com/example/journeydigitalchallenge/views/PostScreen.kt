@@ -12,6 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.journeydigitalchallenge.api.apiService
+import com.example.journeydigitalchallenge.model.data.Comment
+import com.example.journeydigitalchallenge.model.data.Post
 
 
 @Composable
@@ -26,6 +29,7 @@ fun PostScreen(
         // Post
         Box(modifier = Modifier
             .weight(1f)
+//            .fillMaxSize()
             .background(Color.Cyan)) {
 
             Column(modifier = Modifier
@@ -54,6 +58,7 @@ fun PostScreen(
         // Comments
         Box(modifier = Modifier
             .weight(1f)
+//            .fillMaxSize()
             .border(
                 width = 2.dp,
                 color = MaterialTheme.colors.primary,
